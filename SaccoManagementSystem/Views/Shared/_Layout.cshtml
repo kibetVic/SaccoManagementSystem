@@ -1,52 +1,578 @@
-﻿<!DOCTYPE html>
+﻿﻿@using Radzen.Blazor
+@using SaccoManagementSystem.Services
+@inject SessionService sessionService
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SaccoManagementSystem</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SaccoManagementSystem.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - SaccoManagementSystem </title>
+
+    <link rel="stylesheet" href="~/AdminLte/dist/css/adminlte.css" />
+    <!-- Radzen CSS - Make sure these come after Bootstrap -->
+    <link rel="stylesheet" href="/blazorcss/material-base.css" />
+    <link rel="stylesheet" href="/blazorcss/standard-base.css" />
+    <link rel="stylesheet" href="/blazorcss/standard.css" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons <link rel="stylesheet" href="~/css/bootstrap-icons.css" asp-append-version="true" />
+
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> *@
+
+    <!-- Bootstrap for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> *@
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+
+    <!--begin::Fonts-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@@fontsource/source-sans-3@5.0.12/index.css"
+          integrity="sha256-tXJfXfp6Ewt1ilPzLDtQnJV4hclT9XuaZUKyUvmyr+Q="
+          crossorigin="anonymous"
+          media="print"
+          onload="this.media='all'" />
+    <!--begin::Third Party Plugin(OverlayScrollbars)-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/styles/overlayscrollbars.min.css"
+          crossorigin="anonymous" />
+    <!--end::Third Party Plugin(OverlayScrollbars)-->
+    <!--begin::Third Party Plugin(Bootstrap Icons)-->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+          crossorigin="anonymous" />
+    <!--end::Third Party Plugin(Bootstrap Icons)-->
+    <!-- apexcharts -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
+          integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0="
+          crossorigin="anonymous" />
+    <!-- jsvectormap -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
+          integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
+          crossorigin="anonymous" />
+
+    <base href="~/" />
+    <component type="typeof(RadzenTheme)" render-mode="ServerPrerendered" param-Theme="@("material")" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
+    <div class="app-wrapper">
+        <!--begin::Header-->
+        <nav class="app-header navbar navbar-expand bg-body">
+            <!--begin::Container-->
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SaccoManagementSystem</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <!--begin::Start Navbar Links-->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+                            <i class="bi bi-list"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item d-none d-md-block">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                    </li>
+                </ul>
+                <!--end::Start Navbar Links-->
+                <!--begin::End Navbar Links-->
+                <ul class="navbar-nav ms-auto">
+                    <!--begin::Navbar Search-->
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                            <i class="bi bi-search"></i>
+                        </a>
+                    </li>
+                    <!--end::Navbar Search-->
+                    <!--begin::Notifications Dropdown Menu-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-bs-toggle="dropdown" href="#">
+                            <i class="bi bi-bell-fill"></i>
+                            <span class="navbar-badge badge text-bg-warning" id="notificationCount">0</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                            <span class="dropdown-item dropdown-header" id="notificationHeader">No notifications</span>
+                            <div id="notificationList">
+                                <!-- Notifications will be loaded here -->
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item dropdown-footer" onclick="markAllAsRead()">Mark all as read</a>
+                        </div>
+                    </li>
+                    <!--end::Notifications Dropdown Menu-->
+                    <!--begin::Fullscreen Toggle-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-lte-toggle="fullscreen">
+                            <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
+                            <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none"></i>
+                        </a>
+                    </li>
+                    <!--end::Fullscreen Toggle-->
+                    <!--begin::User Menu Dropdown-->
+                    <li class="nav-item dropdown user-menu">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img src="~/AdminLte/dist/assets/img/user2-160x160.jpg"
+                                 class="user-image rounded-circle shadow"
+                                 alt="User Image" />
+                            <span class="d-none d-md-inline">@User.Identity?.Name</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                            <!--begin::User Image-->
+                            <li class="user-header text-bg-primary">
+                                <img src="~/AdminLte/dist/assets/img/user2-160x160.JPG"
+                                     class="rounded-circle shadow"
+                                     alt="User Image" />
+                                <p>
+                                    @User.FindFirst("UserGroup")?.Value
+                                    <small>@User.FindFirst("OrganizationCode")?.Value</small>
+                                </p>
+                            </li>
+                            <!--end::User Image-->
+                            <!--begin::Menu Body-->
+                            <li class="user-body">
+                                <div class="row">
+                                    <div class="col-4 text-center">
+                                        <a href="#">Profile</a>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a href="#">Settings</a>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a href="#">Help</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--end::Menu Body-->
+                            <!--begin::Menu Footer-->
+                            <li class="user-footer">
+                                <a asp-controller="Account" asp-action="Profile" class="btn btn-default btn-flat">Profile</a>
+                                <a asp-controller="Home" asp-action="Login" class="btn btn-default btn-flat float-end">Logout</a>
+                            </li>
+                            <!--end::Menu Footer-->
+                        </ul>
+                    </li>
+                    <!--end::User Menu Dropdown-->
+                </ul>
+                <!--end::End Navbar Links-->
+            </div>
+            <!--end::Container-->
+        </nav>
+        <!--begin::Sidebar-->
+        <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+            <!--begin::Sidebar Brand-->
+            <div class="sidebar-brand">
+                <!--begin::Brand Link-->
+                <a asp-controller="Home" asp-action="Index" class="brand-link">
+                    <!--begin::Brand Image-->
+                    <img src="~/AdminLte/dist/assets/img/AdminLTELogo.png"
+                         alt="SaccoManagementSystem Logo"
+                         class="brand-image opacity-75 shadow" />
+                    <!--end::Brand Image-->
+                    <!--begin::Brand Text-->
+                    <span class="brand-text fw-light">SaccoManagementSystem</span>
+                    <!--end::Brand Text-->
+                </a>
+                <!--end::Brand Link-->
+            </div>
+            <!--end::Sidebar Brand-->
+            <!--begin::Sidebar Wrapper-->
+            <div class="sidebar-wrapper">
+                <nav class="mt-2">
+                    <!--begin::Sidebar Menu-->
+                    <ul class="nav sidebar-menu flex-column"
+                        data-lte-toggle="treeview"
+                        role="navigation"
+                        aria-label="Main navigation"
+                        data-accordion="false"
+                        id="navigation">
+
+                        <!-- Dashboard -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a asp-controller="Home" asp-action="Index" class="nav-link">
+                                <i class="nav-icon bi bi-speedometer2"></i>
+                                <p>Dashboard</p>
+                            </a>
                         </li>
+
+                        <!-- Property Management -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-building"></i>
+                                <p>
+                                    Patient @* Management *@
+                                    <i class="nav-arrow bi bi-chevron-right float-end"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-controller="Hospital" asp-action="Patient" class="nav-link">
+                                        <i class="nav-icon bi bi-building-fill-add"></i>
+                                        <p>Properties</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Hospital" asp-action="PatientScheme" class="nav-link">
+                                        <i class="nav-icon bi bi-layers-fill"></i>
+                                        <p>Patient Scheme</p>
+                                    </a>
+                                </li>
+                                @* <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Units" class="nav-link">
+                                    <i class="nav-icon bi bi-house-door-fill"></i>
+                                    <p>Units</p>
+                                </a>
+                            </li> *@
+                            </ul>
                         </li>
+
+                        <!-- Tenant Management -->
+                        @* <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-people-fill"></i>
+                            <p>
+                                Tenant @* Management 
+                                <i class="nav-arrow bi bi-chevron-right float-end"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Tenants" class="nav-link">
+                                    <i class="nav-icon bi bi-person-badge-fill"></i>
+                                    <p>Tenants</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Leases" class="nav-link">
+                                    <i class="nav-icon bi bi-file-earmark-text-fill"></i>
+                                    <p>Leases</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li> *@
+
+                        <!-- Financial Management -->
+                        @*<li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-cash-stack"></i>
+                            <p>
+                                Financial  Management 
+                                <i class="nav-arrow bi bi-chevron-right float-end"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Payments" class="nav-link">
+                                    <i class="nav-icon bi bi-credit-card-fill"></i>
+                                    <p>Payments</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Expenses" class="nav-link">
+                                    <i class="nav-icon bi bi-receipt-cutoff"></i>
+                                    <p>Expenses</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Maintenance -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-tools"></i>
+                            <p>
+                                Maintenance
+                                <i class="nav-arrow bi bi-chevron-right float-end"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Request" class="nav-link">
+                                    <i class="nav-icon bi bi-clipboard-check"></i>
+                                    <p>Requests</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Issue" class="nav-link">
+                                    <i class="nav-icon bi bi-exclamation-triangle-fill"></i>
+                                    <p>Issues</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="MaintExpences" class="nav-link">
+                                    <i class="nav-icon bi bi-wrench-adjustable-circle"></i>
+                                    <p>Expenses</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    @* Setups 
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon bi bi-sliders2-vertical"></i>
+                            <p>
+                                Unit Setups
+                                <i class="nav-arrow bi bi-chevron-right float-end"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="UnitTypes" class="nav-link">
+                                    <i class="nav-icon bi bi-house-gear"></i>
+                                    <p>Unit Types</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="UnitTypeDeposit" class="nav-link">
+                                    <i class="nav-icon bi bi-safe2"></i>
+                                    <p>Unit Deposits</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="RentConfig" class="nav-link">
+                                    <i class="nav-icon bi bi-currency-dollar"></i>
+                                    <p>Rent Configuration</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+                        <!-- Administration -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon bi bi-gear-fill"></i>
+                                <p>
+                                    Administration
+                                    <i class="nav-arrow bi bi-chevron-right float-end"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-controller="Home" asp-action="Users" class="nav-link">
+                                        <i class="nav-icon bi bi-people-fill"></i>
+                                        <p>Users</p>
+                                    </a>
+                                </li>
+
+                                <!-- Or in the user management section for admin -->
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a asp-controller="Home" asp-action="Users" class="nav-link">
+                                            <i class="nav-icon bi bi-people-fill"></i>
+                                            <p>User Management</p>
+                                        </a>
+                                    </li>
+                                }
+
+                                @* <li class="nav-item">
+                                <a asp-controller="Rental" asp-action="Client" class="nav-link">
+                                    <i class="nav-icon bi bi-building-gear"></i>
+                                    <p>Clients</p>
+                                </a>
+                            </li> *@
+                            </ul>
                         </li>
+
+
+                        @*  <li class="nav-item">
+                        <a asp-controller="Rental" asp-action="Reports" class="nav-link">
+                            <i class="nav-icon bi bi-bar-chart-fill"></i>
+                            <p>Reports</p>
+                        </a>
+                    </li>
+
+                    <!-- Quick Links -->
+                    <li class="nav-header mt-3">
+                        <i class="nav-icon bi bi-lightning-fill text-warning"></i>
+                        QUICK LINKS
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Rental" asp-action="VacantUnits" class="nav-link">
+                            <i class="nav-icon bi bi-house-door text-success"></i>
+                            <p>Vacant Units</p>
+                        </a>
+                    </li>*@
                     </ul>
+                    <!--end::Sidebar Menu-->
+                </nav>
+            </div>
+            <!--end::Sidebar Wrapper-->
+        </aside>
+
+        <main class="app-main">
+            <div class="app-content-header">
+                <!--begin::Container-->
+                <div class="container-fluid">
+                    <!--begin::Row-->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3 class="mb-0">@ViewData["Title"]</h3>
+                            <small class="text-muted">@ViewData["SubTitle"]</small>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-end">
+                                @{
+                                    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+                                    var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+                                    <li class="breadcrumb-item">
+                                        <a asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+
+                                    if (!string.IsNullOrEmpty(controller) && controller != "Home")
+                                    {
+                                        <li class="breadcrumb-item">
+                                            <a asp-controller="@controller" asp-action="Index">@controller</a>
+                                        </li>
+                                    }
+
+                                    if (!string.IsNullOrEmpty(action) && action != "Index")
+                                    {
+                                        <li class="breadcrumb-item active" aria-current="page">@action</li>
+                                    }
+                                }
+                            </ol>
+                        </div>
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <div class="app-content">
+                <div class="container-fluid">
+                    <!-- Quick Stats Row -->
+                    @if (IsSectionDefined("QuickStats"))
+                    {
+                        @RenderSection("QuickStats", required: false)
+                    }
+
+                    @RenderBody()
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
         </main>
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - SaccoManagementSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
+            crossorigin="anonymous"></script>
+    <!--end::Third Party Plugin(OverlayScrollbars)-->
+    <!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            crossorigin="anonymous"></script>
+    <!--end::Required Plugin(popperjs for Bootstrap 5)-->
+    <!--begin::Required Plugin(Bootstrap 5)-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+            crossorigin="anonymous"></script>
+    <script src="~/AdminLte/dist/js/adminlte.js"></script>
+
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
+
+    <script>
+        const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
+        const Default = {
+            scrollbarTheme: 'os-theme-light',
+            scrollbarAutoHide: 'leave',
+            scrollbarClickScroll: true,
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize sidebar scrollbars
+            const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+            if (sidebarWrapper && OverlayScrollbarsGlobal?.OverlayScrollbars !== undefined) {
+                OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+                    scrollbars: {
+                        theme: Default.scrollbarTheme,
+                        autoHide: Default.scrollbarAutoHide,
+                        clickScroll: Default.scrollbarClickScroll,
+                    },
+                });
+            }
+
+            // Set active menu item based on current page
+            setActiveMenuItem();
+
+            // Load notifications
+            loadNotifications();
+        });
+
+        function setActiveMenuItem() {
+            const currentPath = window.location.pathname.toLowerCase();
+            const navLinks = document.querySelectorAll('#navigation a.nav-link');
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href')?.toLowerCase();
+                if (href && (currentPath.includes(href) || href.includes(currentPath.split('/').pop()))) {
+                    link.classList.add('active');
+
+                    // Expand parent if it's a treeview item
+                    const parentItem = link.closest('.nav-treeview');
+                    if (parentItem) {
+                        const parentLink = parentItem.previousElementSibling;
+                        if (parentLink && parentLink.classList.contains('nav-link')) {
+                            parentLink.classList.add('active');
+                            const treeview = parentLink.closest('.nav-item');
+                            if (treeview) {
+                                treeview.classList.add('menu-open');
+                            }
+                        }
+                    }
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        function loadNotifications() {
+            // This would typically call an API endpoint
+            // For now, we'll simulate with static data
+            const notifications = [
+                { id: 1, message: 'New lease agreement signed', time: '2 hours ago', unread: true },
+                { id: 2, message: 'Payment received from John Doe', time: '4 hours ago', unread: true },
+                { id: 3, message: 'Maintenance request submitted', time: '1 day ago', unread: false }
+            ];
+
+            const unreadCount = notifications.filter(n => n.unread).length;
+            document.getElementById('notificationCount').textContent = unreadCount;
+            document.getElementById('notificationHeader').textContent = `${unreadCount} Notifications`;
+
+            const notificationList = document.getElementById('notificationList');
+            notificationList.innerHTML = '';
+
+            notifications.forEach(notification => {
+                const itemClass = notification.unread ? 'dropdown-item fw-bold' : 'dropdown-item';
+                const item = document.createElement('a');
+                item.href = '#';
+                item.className = itemClass;
+                item.innerHTML = `
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="mb-0">${notification.message}</p>
+                            <small class="text-muted">${notification.time}</small>
+                        </div>
+                        ${notification.unread ? '<span class="badge bg-danger ms-2">New</span>' : ''}
+                    </div>
+                `;
+                notificationList.appendChild(item);
+                notificationList.appendChild(document.createElement('div')).className = 'dropdown-divider';
+            });
+        }
+
+        function markAllAsRead() {
+            // This would typically call an API endpoint
+            document.getElementById('notificationCount').textContent = '0';
+            document.getElementById('notificationHeader').textContent = 'No notifications';
+            loadNotifications(); // Reload to show all as read
+        }
+
+        // Auto-refresh notifications every 30 seconds
+        setInterval(loadNotifications, 30000);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
+            crossorigin="anonymous"></script>
+    <script src="_framework/blazor.server.js"></script>
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

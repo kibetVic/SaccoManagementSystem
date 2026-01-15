@@ -5,7 +5,7 @@ namespace SaccoManagementSystem.Models;
 
 public partial class Client
 {
-    public int Id { get; set; }
+    public int ClientId { get; set; }
 
     public string? Surname { get; set; }
 
@@ -40,4 +40,9 @@ public partial class Client
     public string? UserRole { get; set; }
 
     public string? Username { get; set; }
+    public string? SubscriptionPlan { get; set; }
+    public string? CreatedBy { get; set; }
+    public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+    public string? UpdatedBy { get; set; }
+    public DateTime DateUpdated { get; set; }
 }

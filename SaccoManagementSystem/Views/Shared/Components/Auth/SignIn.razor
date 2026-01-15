@@ -1,0 +1,145 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Radzen
+@using Radzen.Blazor
+@using SaccoManagementSystem.Models.Login
+@using SaccoManagementSystem.Services
+@inject NotificationService notificationService
+@inject NavigationManager navigationManager
+@inject AuthService authService
+
+<PageTitle>Login</PageTitle>
+<RadzenNotification />
+<RadzenRow Gap="1" Class="rz-my-12 rz-mx-auto rz-border-radius-6 rz-shadow-10" Style="width: 100%; max-width: 800px; overflow: hidden;">
+    <RadzenColumn Size="12" SizeMD="6">
+        <RadzenCard Class="rz-shadow-0 rz-border-radius-0 rz-text-align-center rz-p-12" Style="height: 100%;background-image: linear-gradient(120deg, #00AEEF 0, #164799 100%);">
+            <RadzenImage Path="images/logo.webp" Style="width: 15rem;" AlternateText="community" />
+            
+        </RadzenCard>
+    </RadzenColumn>
+  
+    <RadzenColumn Size="12" SizeMD="6">
+        <RadzenCard Class="rz-shadow-0 rz-border-radius-0 rz-p-12">
+            <RadzenText TextStyle="TextStyle.H5" TagName="TagName.H2" Class="rz-mb-6">
+                Login
+            </RadzenText>
+                <RadzenTemplateForm TItem="LoginVm" Data=@model Submit=@LoginUser>
+                <RadzenRow Gap="1rem" Style="align-items: center; margin-bottom: 1rem;">
+                <RadzenColumn Size="12" SizeSM="12">
+                    <RadzenStack>
+                         
+                    <RadzenFormField Text="Username" Variant="@Variant.Outlined" AllowFloatingLabel="false">
+                    <RadzenTextBox Style="height:34px;" Name="Email" @bind-Value=@model.Username class="w-100" ValidateOnChange="true" @onfocus="@(() => ShowValidator(false, "Email"))" @onblur="@(() => ShowValidator(true, "Email"))" />
+                     <RadzenRequiredValidator Component="Email" Popup=true Text="Username is required" Style="@(showValidators.ContainsKey("Email") && showValidators["Email"] ? "position: absolute" : "display: none")" />
+                    
+                    </RadzenFormField>
+                            <RadzenFormField Text="Password" Variant="@Variant.Outlined" oninvalid="true" AllowFloatingLabel="false" @onfocus="@(() => ShowValidator(false, "Password"))" @onblur="@(() => ShowValidator(true, "Password"))">
+                                <RadzenPassword Name="Password" @bind-Value=@model.Password class="w-100" Style="@(showPassword ? "display:none;height:34px;" : "display:block;height:34px;")" />
+                                <RadzenTextBox @bind-Value="model.Password" class="w-100" Style="@(showPassword ? "display:block;height:34px;" : "display:none;height:34px;")" Password="@(showPassword ? false : true)" />
+                                <RadzenRequiredValidator Component="Password" Text="Password is required" Popup=true Style="@(showValidators.ContainsKey("Password") && showValidators["Password"] ? "position: absolute" : "display: none")" />
+
+                            </RadzenFormField>
+                         </RadzenStack>
+                        <RadzenRow Style="align-items: center; margin-top: 1rem;">
+                           
+                            <RadzenColumn Size="6">
+                                <RadzenLabel Text="Show Password" Style="font-size:smaller" class="me-1" />
+                                <RadzenCheckBox @bind-Value="showPassword"  />
+                            </RadzenColumn>
+                        </RadzenRow>
+                </RadzenColumn>
+                </RadzenRow>
+                <RadzenButton ButtonType="ButtonType.Submit" IsBusy=@busy Text="Login"  Size="ButtonSize.Small" Style="float:right"></RadzenButton><br /><br />
+               
+               
+                
+            </RadzenTemplateForm>
+        </RadzenCard>
+    </RadzenColumn>
+</RadzenRow>
+ <style>
+    .rz-form-field-label {
+        font-size:medium !important;
+    }
+        </style>
+@code {
+    // Local Variables
+
+
+    private bool showPassword = false;
+    bool poPup = false;
+    bool busy;
+    bool busy2;
+    private const string PASSWORDSET = "Set";
+
+
+    //Models
+    private LoginVm model = new LoginVm();
+    
+
+    private Dictionary<string, bool> showValidators = new Dictionary<string, bool>();
+
+    private void ShowValidator(bool show, string componentName)
+    {
+        if (showValidators.ContainsKey(componentName))
+        {
+            showValidators[componentName] = show;
+        }
+        else
+        {
+            showValidators.Add(componentName, show);
+        }
+    }
+
+    //Toggles the visibility of the password field
+    private void TogglePasswordVisibility()
+    {
+        showPassword = !showPassword;
+    }
+
+    /// <summary>
+    /// Handles the form submission
+    /// </summary>
+    private async Task LoginUser()
+    {
+
+        busy = true;
+        //check if texboxes are empty
+        if (string.IsNullOrEmpty(model.Username) ||
+          string.IsNullOrEmpty(model.Password) )
+        {
+            notificationService.Notify(NotificationSeverity.Error, "Error", "Please fill in all required fields.", 6000);
+            busy = false;
+
+        }
+        //fetches token via Api call
+        var (status,message) = await authService.Login(model);
+        if (status)
+        {
+            busy = false;
+            navigationManager.NavigateTo("/Home/Index", forceLoad: true);
+           
+        }
+        else
+        {
+            busy = false;
+
+            //error message for login failure
+
+            notificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Error",
+                    Detail = message,
+                    Duration = 6000
+                });
+
+        }
+    }
+
+
+   
+
+
+   
+
+}

@@ -20,6 +20,14 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/2026/SaccoManagementSystem/SaccoManagementSystem/Views/Shared/Components/Auth/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQXV0aFxSZWRpcmVjdFRvTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/2026/SaccoManagementSystem/SaccoManagementSystem/Views/Shared/Components/Auth/SignIn.razor]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQXV0aFxTaWduSW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/2026/SaccoManagementSystem/SaccoManagementSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

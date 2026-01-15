@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SaccoManagementSystem.Models;
 
-public partial class SaccoDBContext : DbContext
+public partial class ApplicationDBContext : DbContext
 {
-    public SaccoDBContext()
+    public ApplicationDBContext()
     {
     }
 
-    public SaccoDBContext(DbContextOptions<SaccoDBContext> options)
+    public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
         : base(options)
     {
     }

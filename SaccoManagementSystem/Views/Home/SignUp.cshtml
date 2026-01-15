@@ -1,0 +1,199 @@
+﻿@model SaccoManagementSystem.Models.SignUpViewModel
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SaccoManagementSystem</title>
+
+    <link rel="stylesheet" href="~/AdminLte/dist/css/adminlte.css" />
+    <!-- Material Symbols (REQUIRED) -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          crossorigin="anonymous" />
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center shadow-lg rounded" style="max-width: 800px; margin:auto;">
+            <!-- Left side (logo section) -->
+            <div class="col-md-6 text-center text-white p-4"
+                 style="background-image: linear-gradient(120deg, #00AEEF 0, #164799 100%);">
+                <img src="~/wwwroot/images/logo.png" alt="community" style="width: 10rem;" />
+                <h4 class="mt-3">Join Hospital Management</h4>
+                <p class="mt-2 small">Create your account</p>
+            </div>
+
+            <!-- Right side (form section) -->
+            <div class="col-md-6 p-4 bg-white">
+                <h3 class="mb-3">Create Account</h3>
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show py-2" role="alert">
+                        <small>@TempData["SuccessMessage"]</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show py-2" role="alert">
+                        <small>@TempData["ErrorMessage"]</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <form asp-controller="Home" asp-action="SignUp" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-2">
+                        <label asp-for="UserName" class="form-label small fw-bold">Username</label>
+                        <input asp-for="UserName" class="form-control form-control-sm" required />
+                        <span asp-validation-for="UserName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="OrganizationCode" class="form-label small fw-bold">Organization Code</label>
+                        <input asp-for="OrganizationCode" class="form-control form-control-sm" required />
+                        <span asp-validation-for="OrganizationCode" class="text-danger small"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label asp-for="UserGroup" class="form-label small fw-bold">User Group</label>
+                                <select asp-for="UserGroup" asp-items="ViewBag.UserGroups" class="form-select form-select-sm">
+                                    <option value="">Select Group</option>
+                                </select>
+                                <span asp-validation-for="UserGroup" class="text-danger small"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label asp-for="Branch" class="form-label small fw-bold">Branch</label>
+                                <select asp-for="Branch" asp-items="ViewBag.Branches" class="form-select form-select-sm">
+                                    <option value="">Select Branch</option>
+                                </select>
+                                <span asp-validation-for="Branch" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label asp-for="Password" class="form-label small fw-bold">Password</label>
+                        <div class="input-group input-group-sm">
+                            <input asp-for="Password" id="passwordField" type="password" class="form-control" required />
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+                            </button>
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                        <small class="text-muted">Min. 6 characters</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConfirmPassword" class="form-label small fw-bold">Confirm Password</label>
+                        <div class="input-group input-group-sm">
+                            <input asp-for="ConfirmPassword" id="confirmPasswordField" type="password" class="form-control" required />
+                            <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">visibility</span>
+                            </button>
+                        </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input asp-for="AcceptTerms" class="form-check-input" id="acceptTerms" />
+                        <label class="form-check-label small" for="acceptTerms">
+                            I agree to the <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#termsModal">terms</a>
+                        </label>
+                        <span asp-validation-for="AcceptTerms" class="text-danger small d-block"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-sm w-100 mb-2">Create Account</button>
+
+                    <div class="text-center">
+                        <p class="small mb-0">Already have an account? <a asp-controller="Home" asp-action="Login" class="text-decoration-none">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h6 class="modal-title" id="termsModalLabel">Terms and Conditions</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small">By creating an account, you agree to our terms of service...</p>
+                </div>
+                <div class="modal-footer py-2">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordField = document.getElementById('passwordField');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                passwordField.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+
+        // Toggle confirm password visibility
+        document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+            const confirmPasswordField = document.getElementById('confirmPasswordField');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (confirmPasswordField.type === 'password') {
+                confirmPasswordField.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                confirmPasswordField.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+
+        // Real-time password match validation
+        const passwordField = document.getElementById('passwordField');
+        const confirmPasswordField = document.getElementById('confirmPasswordField');
+
+        function validatePasswordMatch() {
+            const password = passwordField.value;
+            const confirmPassword = confirmPasswordField.value;
+
+            if (confirmPassword === '') return;
+
+            if (password !== confirmPassword) {
+                confirmPasswordField.classList.add('is-invalid');
+                confirmPasswordField.classList.remove('is-valid');
+            } else {
+                confirmPasswordField.classList.remove('is-invalid');
+                confirmPasswordField.classList.add('is-valid');
+            }
+        }
+
+        passwordField.addEventListener('input', validatePasswordMatch);
+        confirmPasswordField.addEventListener('input', validatePasswordMatch);
+    </script>
+</body>
+</html>

@@ -3,54 +3,20 @@
   "WorkspaceRootPath": "D:\\2026\\SaccoManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\2026\\HospitalManagementSystem\\HospitalManagementSystem\\Views\\Shared\\_Layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\models\\useraccounts1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\models\\useraccounts1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\2026\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\models\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Migrations\\20260115113602_saccos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SaccoManagementSystem\\Migrations\\20260115113602_saccos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\models\\db\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\models\\db\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\models\\systemuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\models\\systemuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Migrations\\20260115113125_saccos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SaccoManagementSystem\\Migrations\\20260115113125_saccos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\views\\shared\\components\\auth\\signin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\views\\shared\\components\\auth\\signin.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\utils\\decryptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\utils\\decryptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\utils\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\utils\\utilities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|d:\\2026\\saccomanagementsystem\\saccomanagementsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{685B3CBC-750D-4CC5-9D87-25BA44EE7FF7}|SaccoManagementSystem\\SaccoManagementSystem.csproj|solutionrelative:saccomanagementsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -60,175 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\2026\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs",
-              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs",
-              "ToolTip": "D:\\2026\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs",
-              "RelativeToolTip": "..\\HospitalManagementSystem\\HospitalManagementSystem\\Program.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAmwEgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "20260115113602_saccos.cs",
+              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Migrations\\20260115113602_saccos.cs",
+              "RelativeDocumentMoniker": "SaccoManagementSystem\\Migrations\\20260115113602_saccos.cs",
+              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Migrations\\20260115113602_saccos.cs",
+              "RelativeToolTip": "SaccoManagementSystem\\Migrations\\20260115113602_saccos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:55:09.371Z",
+              "WhenOpened": "2026-01-15T11:36:03.326Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserAccounts1.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\UserAccounts1.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Models\\UserAccounts1.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\UserAccounts1.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Models\\UserAccounts1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:54:25.865Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Client.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\Client.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Models\\Client.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\Client.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Models\\Client.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAIARwCoAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:50:00.031Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ClientService.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Services\\ClientService.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Services\\ClientService.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Services\\ClientService.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Services\\ClientService.cs",
-              "ViewState": "AgIAAJcAAAAAsMzMzMzwv28AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:47:22.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Services\\AuthService.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Services\\AuthService.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Services\\AuthService.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Services\\AuthService.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC4AAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:47:08.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAKoAAAAAkJmZmZn7v04AAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:45:56.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "ApplicationDBContext.cs",
               "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\DB\\ApplicationDBContext.cs",
               "RelativeDocumentMoniker": "SaccoManagementSystem\\Models\\DB\\ApplicationDBContext.cs",
               "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\DB\\ApplicationDBContext.cs",
               "RelativeToolTip": "SaccoManagementSystem\\Models\\DB\\ApplicationDBContext.cs",
-              "ViewState": "AgIAAAIAAAAwMzMzM7MiwBIAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAADoCAAAAAAAAAAAgwEUCAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:45:36.182Z",
+              "WhenOpened": "2026-01-15T11:34:43.392Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SystemUser.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\SystemUser.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Models\\SystemUser.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Models\\SystemUser.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Models\\SystemUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "20260115113125_saccos.cs",
+              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Migrations\\20260115113125_saccos.cs",
+              "RelativeDocumentMoniker": "SaccoManagementSystem\\Migrations\\20260115113125_saccos.cs",
+              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Migrations\\20260115113125_saccos.cs",
+              "RelativeToolTip": "SaccoManagementSystem\\Migrations\\20260115113125_saccos.cs",
+              "ViewState": "AgIAABYBAAAAAAAAAAAgwCEBAACMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:45:22.042Z",
+              "WhenOpened": "2026-01-15T11:31:25.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "SaccoManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKgAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-15T09:42:30.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\2026\\HospitalManagementSystem\\HospitalManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "..\\HospitalManagementSystem\\HospitalManagementSystem\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\2026\\HospitalManagementSystem\\HospitalManagementSystem\\Views\\Shared\\_Layout.cshtml*",
-              "RelativeToolTip": "..\\HospitalManagementSystem\\HospitalManagementSystem\\Views\\Shared\\_Layout.cshtml*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-15T09:42:38.115Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SignIn.razor",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Views\\Shared\\Components\\Auth\\SignIn.razor",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Views\\Shared\\Components\\Auth\\SignIn.razor",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Views\\Shared\\Components\\Auth\\SignIn.razor",
-              "RelativeToolTip": "SaccoManagementSystem\\Views\\Shared\\Components\\Auth\\SignIn.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-15T09:41:49.706Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Utilities.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Utils\\Utilities.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Utils\\Utilities.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Utils\\Utilities.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Utils\\Utilities.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:40:36.97Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Decryptor.cs",
-              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Utils\\Decryptor.cs",
-              "RelativeDocumentMoniker": "SaccoManagementSystem\\Utils\\Decryptor.cs",
-              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\Utils\\Decryptor.cs",
-              "RelativeToolTip": "SaccoManagementSystem\\Utils\\Decryptor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:40:29.497Z",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\appsettings.json",
+              "RelativeDocumentMoniker": "SaccoManagementSystem\\appsettings.json",
+              "ToolTip": "D:\\2026\\SaccoManagementSystem\\SaccoManagementSystem\\appsettings.json",
+              "RelativeToolTip": "SaccoManagementSystem\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-15T11:30:32.385Z",
               "EditorCaption": ""
             },
             {
@@ -238,10 +87,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         },

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaccoManagementSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2ff0ca6bbe86f360d29ada9d951c838639c30d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc1de26dd9620aabd113a0230e521977e02473c5")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaccoManagementSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaccoManagementSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

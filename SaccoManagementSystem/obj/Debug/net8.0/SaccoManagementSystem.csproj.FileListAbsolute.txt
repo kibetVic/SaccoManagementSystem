@@ -275,3 +275,4 @@ D:\2026\SaccoManagementSystem\SaccoManagementSystem\obj\Debug\net8.0\staticwebas
 D:\2026\SaccoManagementSystem\SaccoManagementSystem\obj\Debug\net8.0\SaccoMan.ACB3C268.Up2Date
 D:\2026\SaccoManagementSystem\SaccoManagementSystem\obj\Debug\net8.0\SaccoManagementSystem.genruntimeconfig.cache
 D:\2026\SaccoManagementSystem\SaccoManagementSystem\obj\Debug\net8.0\ref\SaccoManagementSystem.dll
+D:\2026\SaccoManagementSystem\SaccoManagementSystem\bin\Debug\net8.0\Radzen.Blazor.dll

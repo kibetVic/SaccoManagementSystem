@@ -1,0 +1,90 @@
+﻿@model SaccoManagementSystem.Models.SystemUsers
+
+@{
+    ViewData["Title"] = "Edit User";
+    ViewData["SubTitle"] = "Edit user information";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Edit User: @Model.UserName</h3>
+            </div>
+            <div class="card-body">
+                <form asp-action="EditUser" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="SystemUserId" />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="UserName" class="form-label"></label>
+                                <input asp-for="UserName" class="form-control" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="OrganizationCode" class="form-label"></label>
+                                <input asp-for="OrganizationCode" class="form-control" />
+                                <span asp-validation-for="OrganizationCode" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="Branch" class="form-label"></label>
+                                <select asp-for="Branch" asp-items="ViewBag.Branches" class="form-select">
+                                    <option value="">Select Branch</option>
+                                </select>
+                                <span asp-validation-for="Branch" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="UserGroup" class="form-label"></label>
+                                <select asp-for="UserGroup" asp-items="ViewBag.UserGroups" class="form-select">
+                                    <option value="">Select User Group</option>
+                                </select>
+                                <span asp-validation-for="UserGroup" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label">New Password (leave blank to keep current)</label>
+                                <input asp-for="Password" class="form-control" type="password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input asp-for="Active" class="form-check-input" />
+                            <label asp-for="Active" class="form-check-label">
+                                Active Account
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Users" class="btn btn-secondary">Back to List</a>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
